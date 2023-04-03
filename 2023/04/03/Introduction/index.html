@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Software FoundationsIntroduction03 Sources of KnowledgeType System Compilers can automatically find errors. Compliers use deductive resoning to determine whether that are type errors.And human designe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/04/03/Introduction/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Software FoundationsIntroduction03 Sources of KnowledgeType System Compilers can automatically find errors. Compliers use deductive resoning to determine whether that are type errors.And human designe">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-04-03T12:57:48.000Z">
+<meta property="article:modified_time" content="2023-04-03T12:58:08.860Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="[software-foundations] title: Introduction-Introduction" class="article article-type-[software-foundations] title: Introduction" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/04/03/Introduction/" class="article-date">
+  <time datetime="2023-04-03T12:57:48.000Z" itemprop="datePublished">2023-04-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Software-Foundations"><a href="#Software-Foundations" class="headerlink" title="Software Foundations"></a>Software Foundations</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="03-Sources-of-Knowledge"><a href="#03-Sources-of-Knowledge" class="headerlink" title="03 Sources of Knowledge"></a>03 Sources of Knowledge</h3><p>Type System</p>
+<p>Compilers can automatically find errors.</p>
+<p>Compliers use deductive resoning to determine whether that are type errors.<br>And human designer use deductive reasoning to prove that the type system is sound. (Well-typed programs don’t go wrong.)</p>
+<p>This may not be perfect:</p>
+<ul>
+<li>For example, a type system maybe only strong enough to express function with integer input and output.</li>
+<li>Maybe the system is not complete and cannot type some correct programs.</li>
+<li>Maybe the system will fail at runtime because of typecasts.</li>
+</ul>
+<p>Nonetheless, this is still widely accepted.</p>
+<h3 id="04-The-Software-Crisis"><a href="#04-The-Software-Crisis" class="headerlink" title="04 The Software Crisis"></a>04 The Software Crisis</h3><p>Large systems become disastrous.</p>
+<p>Possible solution: Software Engineering.</p>
+<p>Dijkstra present his programming methodology –&gt; formal methods.</p>
+<h3 id="05-Formal-methods"><a href="#05-Formal-methods" class="headerlink" title="05 Formal methods"></a>05 Formal methods</h3><p>Emphasize logic and proof.<br>Formal specifications + proofs about programs + machine checking.</p>
+<p>Foundations of mathematics</p>
+<ul>
+<li>Godel’s First Incompleteness Theorem</li>
+<li>The Halting Problem</li>
+<li>Rice’s Theorem: Every property of a program is undecidable.</li>
+</ul>
+<p>But formal methods are still useful and profitable.</p>
+<h3 id="06-Coq"><a href="#06-Coq" class="headerlink" title="06 Coq"></a>06 Coq</h3><p>‘Interactive Theorem Proving and Program Development’</p>
+<p>Type Theory (improve upon Set Theory)</p>
+<p>Coq is implemented in OCaml.</p>
+<p>Calculus of inductive constructions, better suited to reasoning about data structures.</p>
+<p>Coq features</p>
+<ul>
+<li><strong>Define</strong> computable functions and logical predicates.</li>
+<li><strong>State</strong> mathematical theorems and software specifications.</li>
+<li><strong>Develop</strong> formal proofs of theorems, interactively.</li>
+<li><strong>Machine-check</strong> those proofs.</li>
+<li><strong>Extract</strong> verified programs of OCaml, Haskell, Scheme.</li>
+</ul>
+<!-- insert PPT P25 -->
+
+<h3 id="07-Three-Recent-Great-Works-in-Formal-Verification"><a href="#07-Three-Recent-Great-Works-in-Formal-Verification" class="headerlink" title="07 Three Recent Great Works in Formal Verification"></a>07 Three Recent Great Works in Formal Verification</h3><p>CompCert, written in Coq, has not be found any bug.<br>seL4, written in Isabelle/HOL &amp; Haskell, verifies an operating system microkernel.<br>Fiat Crypography verified implementations of elliptic curve cryptography algorithms.</p>
+<h3 id="08-7-1-Myths"><a href="#08-7-1-Myths" class="headerlink" title="08 7+1 Myths"></a>08 7+1 Myths</h3><p>Formal methods are controversial.</p>
+<ol>
+<li>Formal methods guarantee that software is perfect –&gt; better.</li>
+<li>Formal methods is all about theorem proving. –&gt; Specification comes first, then proof’s about programs.</li>
+<li>Formal methods are only useful for safety-critical systems. –&gt; Also useful in compilers, operating systems, web browser kernels, machine learning systems, distributedd systems etc.</li>
+<li>Formal methods require highly trained mathematicians. –&gt; Can be mastered by most students.</li>
+<li>Formal methods increase the cost of software development. –&gt; Hall claims that they decreased the cost.</li>
+<li>Formal methods are unacceptable to clients. –&gt; They can be explained to clients.</li>
+<li>Formal methods are not used on real, large-scale software. –&gt; Formal methods are being used on real, large-scale software.</li>
+</ol>
+<p>“Formal methods are highly addictive.”</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/04/03/Introduction/" data-id="clg0u7rne0000c4mvh162gvfu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/04/03/Basics/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/04/03/Induction/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/03/Basics/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/03/Introduction/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
