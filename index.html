@@ -132,51 +132,11 @@
         <h1 id="Software-Foundations"><a href="#Software-Foundations" class="headerlink" title="Software Foundations"></a>Software Foundations</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="03-Sources-of-Knowledge"><a href="#03-Sources-of-Knowledge" class="headerlink" title="03 Sources of Knowledge"></a>03 Sources of Knowledge</h3><p>Type System</p>
 <p>Compilers can automatically find errors.</p>
 <p>Compliers use deductive resoning to determine whether that are type errors.<br>And human designer use deductive reasoning to prove that the type system is sound. (Well-typed programs don’t go wrong.)</p>
-<p>This may not be perfect:</p>
-<ul>
-<li>For example, a type system maybe only strong enough to express function with integer input and output.</li>
-<li>Maybe the system is not complete and cannot type some correct programs.</li>
-<li>Maybe the system will fail at runtime because of typecasts.</li>
-</ul>
-<p>Nonetheless, this is still widely accepted.</p>
-<h3 id="04-The-Software-Crisis"><a href="#04-The-Software-Crisis" class="headerlink" title="04 The Software Crisis"></a>04 The Software Crisis</h3><p>Large systems become disastrous.</p>
-<p>Possible solution: Software Engineering.</p>
-<p>Dijkstra present his programming methodology –&gt; formal methods.</p>
-<h3 id="05-Formal-methods"><a href="#05-Formal-methods" class="headerlink" title="05 Formal methods"></a>05 Formal methods</h3><p>Emphasize logic and proof.<br>Formal specifications + proofs about programs + machine checking.</p>
-<p>Foundations of mathematics</p>
-<ul>
-<li>Godel’s First Incompleteness Theorem</li>
-<li>The Halting Problem</li>
-<li>Rice’s Theorem: Every property of a program is undecidable.</li>
-</ul>
-<p>But formal methods are still useful and profitable.</p>
-<h3 id="06-Coq"><a href="#06-Coq" class="headerlink" title="06 Coq"></a>06 Coq</h3><p>‘Interactive Theorem Proving and Program Development’</p>
-<p>Type Theory (improve upon Set Theory)</p>
-<p>Coq is implemented in OCaml.</p>
-<p>Calculus of inductive constructions, better suited to reasoning about data structures.</p>
-<p>Coq features</p>
-<ul>
-<li><strong>Define</strong> computable functions and logical predicates.</li>
-<li><strong>State</strong> mathematical theorems and software specifications.</li>
-<li><strong>Develop</strong> formal proofs of theorems, interactively.</li>
-<li><strong>Machine-check</strong> those proofs.</li>
-<li><strong>Extract</strong> verified programs of OCaml, Haskell, Scheme.</li>
-</ul>
-<!-- insert PPT P25 -->
-
-<h3 id="07-Three-Recent-Great-Works-in-Formal-Verification"><a href="#07-Three-Recent-Great-Works-in-Formal-Verification" class="headerlink" title="07 Three Recent Great Works in Formal Verification"></a>07 Three Recent Great Works in Formal Verification</h3><p>CompCert, written in Coq, has not be found any bug.<br>seL4, written in Isabelle/HOL &amp; Haskell, verifies an operating system microkernel.<br>Fiat Crypography verified implementations of elliptic curve cryptography algorithms.</p>
-<h3 id="08-7-1-Myths"><a href="#08-7-1-Myths" class="headerlink" title="08 7+1 Myths"></a>08 7+1 Myths</h3><p>Formal methods are controversial.</p>
-<ol>
-<li>Formal methods guarantee that software is perfect –&gt; better.</li>
-<li>Formal methods is all about theorem proving. –&gt; Specification comes first, then proof’s about programs.</li>
-<li>Formal methods are only useful for safety-critical systems. –&gt; Also useful in compilers, operating systems, web browser kernels, machine learning systems, distributedd systems etc.</li>
-<li>Formal methods require highly trained mathematicians. –&gt; Can be mastered by most students.</li>
-<li>Formal methods increase the cost of software development. –&gt; Hall claims that they decreased the cost.</li>
-<li>Formal methods are unacceptable to clients. –&gt; They can be explained to clients.</li>
-<li>Formal methods are not used on real, large-scale software. –&gt; Formal methods are being used on real, large-scale software.</li>
-</ol>
-<p>“Formal methods are highly addictive.”</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2023/04/03/Introduction/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
