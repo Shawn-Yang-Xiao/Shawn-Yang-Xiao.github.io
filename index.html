@@ -5,17 +5,19 @@
   
 
   
-  <title>Hexo</title>
+  <title>肖扬的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+  <meta name="description" content="TCS和其他">
+<meta property="og:type" content="website">
+<meta property="og:title" content="肖扬的博客">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="og:site_name" content="肖扬的博客">
+<meta property="og:description" content="TCS和其他">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="肖扬">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="肖扬的博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -36,7 +38,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">肖扬的博客</a>
       </h1>
       
     </div>
@@ -53,7 +55,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
@@ -66,7 +68,7 @@
   
     <article id="[software-foundations] title: Induction-Induction" class="article article-type-[software-foundations] title: Induction" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2023/04/03/Induction/" class="article-date">
+    <a href="/wiki/Induction/" class="article-date">
   <time datetime="2023-04-03T13:05:34.000Z" itemprop="datePublished">2023-04-03</time>
 </a>
     
@@ -76,11 +78,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Software-Foundations"><a href="#Software-Foundations" class="headerlink" title="Software Foundations"></a>Software Foundations</h1><h2 id="Induction"><a href="#Induction" class="headerlink" title="Induction"></a>Induction</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> minus_n_n: <span class="keyword">forall</span> n, minus n n = <span class="number">0.</span></span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">    <span class="built_in">intro</span> n. <span class="built_in">induction</span> n <span class="built_in">as</span> [| <span class="type">n</span>&#x27; IHn&#x27;]. </span><br><span class="line">    - <span class="comment">(* n = 0 *)</span> <span class="built_in">simpl</span>. <span class="built_in">reflexivity</span>.</span><br><span class="line">    - <span class="comment">(* n = S n&#x27; *)</span> <span class="built_in">simpl</span>. <span class="built_in">assumption</span>.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+        <h1 id="software-foundations">Software Foundations</h1>
+<h2 id="induction">Induction</h2>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> minus_n_n: <span class="keyword">forall</span> n, minus n n = <span class="number">0.</span></span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">    <span class="built_in">intro</span> n. <span class="built_in">induction</span> n <span class="built_in">as</span> [| <span class="type">n</span>&#x27; IHn&#x27;]. </span><br><span class="line">    - <span class="comment">(* n = 0 *)</span> <span class="built_in">simpl</span>. <span class="built_in">reflexivity</span>.</span><br><span class="line">    - <span class="comment">(* n = S n&#x27; *)</span> <span class="built_in">simpl</span>. <span class="built_in">assumption</span>.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/03/Induction/" data-id="clg0ujhsk00015wmvg7b5elom" class="article-share-link">Share</a>
+      <a data-url="http://example.com/wiki/Induction/" data-id="clg11tn7r0003vkmv3e7ih94n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -92,7 +97,7 @@
   
     <article id="[software-foundations] title: Basics-Basics" class="article article-type-[software-foundations] title: Basics" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2023/04/03/Basics/" class="article-date">
+    <a href="/wiki/Basics/" class="article-date">
   <time datetime="2023-04-03T13:04:31.000Z" itemprop="datePublished">2023-04-03</time>
 </a>
     
@@ -102,12 +107,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Software-Foundations"><a href="#Software-Foundations" class="headerlink" title="Software Foundations"></a>Software Foundations</h1><h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h2><p>Pattern-machine needs to be exhaustive, and cannot be redundant.</p>
-<!-- With examples -->
+        <h1 id="software-foundations">Software Foundations</h1>
+<h2 id="basics">Basics</h2>
+<p>Pattern-machine needs to be exhaustive, and cannot be redundant.
+<!-- With examples --></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/03/Basics/" data-id="clg0ujhsf00005wmva5r08tmo" class="article-share-link">Share</a>
+      <a data-url="http://example.com/wiki/Basics/" data-id="clg11tn7n0001vkmv6npbg95g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -119,7 +127,7 @@
   
     <article id="[software-foundations] title: Introduction-Introduction" class="article article-type-[software-foundations] title: Introduction" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2023/04/03/Introduction/" class="article-date">
+    <a href="/wiki/Introduction/" class="article-date">
   <time datetime="2023-04-03T12:57:48.000Z" itemprop="datePublished">2023-04-03</time>
 </a>
     
@@ -129,18 +137,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Software-Foundations"><a href="#Software-Foundations" class="headerlink" title="Software Foundations"></a>Software Foundations</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="03-Sources-of-Knowledge"><a href="#03-Sources-of-Knowledge" class="headerlink" title="03 Sources of Knowledge"></a>03 Sources of Knowledge</h3><p>Type System</p>
+        <h1 id="software-foundations">Software Foundations</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="sources-of-knowledge">03 Sources of Knowledge</h3>
+<p>Type System</p>
 <p>Compilers can automatically find errors.</p>
-<p>Compliers use deductive resoning to determine whether that are type errors.<br>And human designer use deductive reasoning to prove that the type system is sound. (Well-typed programs don’t go wrong.)</p>
+<p>Compliers use deductive resoning to determine whether that are type
+errors. And human designer use deductive reasoning to prove that the
+type system is sound. (Well-typed programs don't go wrong.)</p>
         
           <p class="article-more-link">
-            <a href="/2023/04/03/Introduction/#more">Read More</a>
+            <a href="/wiki/Introduction/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/03/Introduction/" data-id="clg0u7rne0000c4mvh162gvfu" class="article-share-link">Share</a>
+      <a data-url="http://example.com/wiki/Introduction/" data-id="clg11tn7y0005vkmvh124doup" class="article-share-link">Share</a>
       
       
     </footer>
@@ -166,9 +179,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a></li></ul>
     </div>
   </div>
 
@@ -176,20 +189,20 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2023/04/03/Induction/">(no title)</a>
+            <a href="/wiki/Induction/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2023/04/03/Basics/">(no title)</a>
+            <a href="/wiki/Basics/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2023/04/03/Introduction/">(no title)</a>
+            <a href="/wiki/Introduction/">(no title)</a>
           </li>
         
       </ul>
@@ -204,7 +217,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2023 John Doe<br>
+      &copy; 2023 肖扬<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

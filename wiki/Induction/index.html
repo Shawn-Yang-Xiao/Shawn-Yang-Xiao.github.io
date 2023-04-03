@@ -5,21 +5,21 @@
   
 
   
-  <title>Hexo</title>
+  <title>肖扬的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Software FoundationsInduction123456Theorem minus_n_n: forall n, minus n n &#x3D; 0.Proof.    intro n. induction n as [| n&amp;#x27; IHn&amp;#x27;].     - (* n &#x3D; 0 *) simpl. reflexivity.    - (* n &#x3D; S n&amp;#x27; *) si">
+  <meta name="description" content="Software Foundations Induction 123456Theorem minus_n_n: forall n, minus n n &#x3D; 0.Proof.    intro n. induction n as [| n&amp;#x27; IHn&amp;#x27;].     - (* n &#x3D; 0 *) simpl. reflexivity.    - (* n &#x3D; S n&amp;#x27; *">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/2023/04/03/Induction/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Software FoundationsInduction123456Theorem minus_n_n: forall n, minus n n &#x3D; 0.Proof.    intro n. induction n as [| n&amp;#x27; IHn&amp;#x27;].     - (* n &#x3D; 0 *) simpl. reflexivity.    - (* n &#x3D; S n&amp;#x27; *) si">
-<meta property="og:locale" content="en_US">
+<meta property="og:title" content="肖扬的博客">
+<meta property="og:url" content="http://example.com/wiki/Induction/index.html">
+<meta property="og:site_name" content="肖扬的博客">
+<meta property="og:description" content="Software Foundations Induction 123456Theorem minus_n_n: forall n, minus n n &#x3D; 0.Proof.    intro n. induction n as [| n&amp;#x27; IHn&amp;#x27;].     - (* n &#x3D; 0 *) simpl. reflexivity.    - (* n &#x3D; S n&amp;#x27; *">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-03T13:05:34.000Z">
 <meta property="article:modified_time" content="2023-04-03T13:05:52.402Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="肖扬">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="肖扬的博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -40,7 +40,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">肖扬的博客</a>
       </h1>
       
     </div>
@@ -57,7 +57,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
@@ -68,7 +68,7 @@
       <div class="outer">
         <section id="main"><article id="[software-foundations] title: Induction-Induction" class="article article-type-[software-foundations] title: Induction" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2023/04/03/Induction/" class="article-date">
+    <a href="/wiki/Induction/" class="article-date">
   <time datetime="2023-04-03T13:05:34.000Z" itemprop="datePublished">2023-04-03</time>
 </a>
     
@@ -78,11 +78,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Software-Foundations"><a href="#Software-Foundations" class="headerlink" title="Software Foundations"></a>Software Foundations</h1><h2 id="Induction"><a href="#Induction" class="headerlink" title="Induction"></a>Induction</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> minus_n_n: <span class="keyword">forall</span> n, minus n n = <span class="number">0.</span></span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">    <span class="built_in">intro</span> n. <span class="built_in">induction</span> n <span class="built_in">as</span> [| <span class="type">n</span>&#x27; IHn&#x27;]. </span><br><span class="line">    - <span class="comment">(* n = 0 *)</span> <span class="built_in">simpl</span>. <span class="built_in">reflexivity</span>.</span><br><span class="line">    - <span class="comment">(* n = S n&#x27; *)</span> <span class="built_in">simpl</span>. <span class="built_in">assumption</span>.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+        <h1 id="software-foundations">Software Foundations</h1>
+<h2 id="induction">Induction</h2>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> minus_n_n: <span class="keyword">forall</span> n, minus n n = <span class="number">0.</span></span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">    <span class="built_in">intro</span> n. <span class="built_in">induction</span> n <span class="built_in">as</span> [| <span class="type">n</span>&#x27; IHn&#x27;]. </span><br><span class="line">    - <span class="comment">(* n = 0 *)</span> <span class="built_in">simpl</span>. <span class="built_in">reflexivity</span>.</span><br><span class="line">    - <span class="comment">(* n = S n&#x27; *)</span> <span class="built_in">simpl</span>. <span class="built_in">assumption</span>.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/03/Induction/" data-id="clg0ujhsk00015wmvg7b5elom" class="article-share-link">Share</a>
+      <a data-url="http://example.com/wiki/Induction/" data-id="clg11tn7r0003vkmv3e7ih94n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -92,7 +95,7 @@
 <nav id="article-nav">
   
   
-    <a href="/2023/04/03/Basics/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/wiki/Basics/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title"></div>
     </a>
@@ -116,9 +119,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a></li></ul>
     </div>
   </div>
 
@@ -126,20 +129,20 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2023/04/03/Induction/">(no title)</a>
+            <a href="/wiki/Induction/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2023/04/03/Basics/">(no title)</a>
+            <a href="/wiki/Basics/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2023/04/03/Introduction/">(no title)</a>
+            <a href="/wiki/Introduction/">(no title)</a>
           </li>
         
       </ul>
@@ -154,7 +157,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2023 John Doe<br>
+      &copy; 2023 肖扬<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
