@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Sipser Part One | 肖扬的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Introduction to the Theory of Computation Michael Sipser with MIT 18.404 Theory of Computation 2020 Fall PPT Part One: Automata and Languages Lecture 1 Automata, computability and complexity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sipser Part One">
+<meta property="og:url" content="http://example.com/wiki/Sipser-Part-One/index.html">
+<meta property="og:site_name" content="肖扬的博客">
+<meta property="og:description" content="Introduction to the Theory of Computation Michael Sipser with MIT 18.404 Theory of Computation 2020 Fall PPT Part One: Automata and Languages Lecture 1 Automata, computability and complexity">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-11T08:10:43.000Z">
+<meta property="article:modified_time" content="2023-04-11T08:11:40.123Z">
+<meta property="article:author" content="肖扬">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="肖扬的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">肖扬的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Sipser-Part-One" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/wiki/Sipser-Part-One/" class="article-date">
+  <time datetime="2023-04-11T08:10:43.000Z" itemprop="datePublished">2023-04-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Sipser Part One
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1
+id="introduction-to-the-theory-of-computation-michael-sipser">Introduction
+to the Theory of Computation Michael Sipser</h1>
+<p>with MIT 18.404 Theory of Computation <a
+target="_blank" rel="noopener" href="https://math.mit.edu/~sipser/18404/Lectures%20Fall%202020/index.html">2020
+Fall PPT</a></p>
+<h2 id="part-one-automata-and-languages">Part One: Automata and
+Languages</h2>
+<h3 id="lecture-1">Lecture 1</h3>
+<h4 id="automata-computability-and-complexity">Automata, computability
+and complexity</h4>
+<p>Finite Automaton 1. a model of computer with limited capacity 2.
+state diagram of finite automaton</p>
+<span id="more"></span>
+<ul>
+<li>states, transitions, start state, accept states</li>
+<li>Input: finite string; Output: Accept or Reject
+<ul>
+<li>The language of the machine: collection of strings that can be
+accepted by the machine</li>
+<li>A is the language of M &lt;=&gt; M recognize A &lt;=&gt; A =
+L(M)</li>
+</ul></li>
+<li>A Math Def: A finite automaton M is a 5-tuple (Q,<span
+class="math inline">\(\mathrm{\Sigma}\)</span>,<span
+class="math inline">\(\delta\)</span>,<span
+class="math inline">\(q_0\)</span>,F).
+<ul>
+<li>Q: finite set of states.</li>
+<li><span class="math inline">\(\mathrm{\Sigma}\)</span>: finite set of
+alphabet symbols.</li>
+<li><span class="math inline">\(\delta\)</span>: transition function
+<span class="math inline">\(\delta:Q\times\mathrm{\Sigma}\rightarrow
+Q\)</span></li>
+<li>F: set of accepted state</li>
+<li>Languages and Expressions</li>
+<li>A <strong>string</strong> is a finite sequence of symbols in <span
+class="math inline">\(\mathrm{\Sigma}\)</span> (the empty string, the
+string of length 0).</li>
+<li>A <strong>language</strong> is a set of strings (finite or infinite)
+(the empty language, the set with no strings).</li>
+<li>a regular language means that it can be applied to a finite
+automaton
+<ul>
+<li>e.g.: B = { w | w has an even number of 1s} is regular; while C = {w
+| w has equal numbers of 0s and 1s} is not regular</li>
+</ul></li>
+</ul></li>
+<li>Regular Expressions
+<ul>
+<li>Union: <span class="math inline">\(A\cup B={w|w \in A \in or\ w\in
+B}\)</span></li>
+<li>Concatenation: <span class="math inline">\(A\circ B={xy | x \in A\
+and \ y \in B}=AB\)</span></li>
+<li>Star: <span class="math inline">\(A^\ast={x_1\ldots x_k|each\ x_i
+\in A \ fork \geq 0}\)</span> (we always have <span
+class="math inline">\(\epsilon \in A^\ast\)</span>)</li>
+<li><strong>Theorem</strong>: (Closure under union operation) If <span
+class="math inline">\(A_1, A_2\)</span> are regular languages, so is
+<span class="math inline">\(A_1\cup A_2\)</span>
+<ul>
+<li><strong>Proof</strong>: Given <span class="math inline">\(M_1
+\rightarrow A_1\)</span>,<span class="math inline">\(M_2 \rightarrow
+A_2\)</span>, construct <span class="math inline">\(M\)</span> that
+accept <span class="math inline">\(w\)</span> of <span
+class="math inline">\(M_1\)</span> or <span
+class="math inline">\(M_2\)</span> accepts <span
+class="math inline">\(w\)</span></li>
+<li>Components of <span class="math inline">\(M\)</span>:
+<ul>
+<li>$Q=Q_1Q_2= { ( q_1,q_2 ) |q_1Q_1 and q_2Q_2 } $</li>
+<li><span class="math inline">\(q_0= \left( q_1,q_2
+\right)\)</span></li>
+<li><span
+class="math inline">\(\delta\left(\left(q,r\right),a\right)=\left(\delta_1\left(q,a\right),\delta_2\left(r,a\right)\right)\)</span></li>
+<li><span class="math inline">\(F=\left(F_1\times
+Q_2\right)\cup\left(Q_1\times F_2\right)\)</span></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Nondeterministic Finite Automata
+<ul>
+<li>Features:
+<ul>
+<li>To a given status and a given transition, there might me more than
+one way to go or having no way to go.</li>
+<li>allow <span class="math inline">\(\epsilon\)</span>-transition
+(“free” movement without reading input)</li>
+<li>Accept input if some path lead to accept status (Acceptance
+overrules rejections)</li>
+</ul></li>
+<li>Definition:
+<ul>
+<li>The definition of a NFA is similar to DFA except <span
+class="math inline">\(\delta:Q\times\mathrm{\Sigma}_\epsilon\rightarrow
+P\left(Q\right)=R|R\subseteq Q\)</span></li>
+</ul></li>
+<li>Ways to think about nondeterminism:
+<ul>
+<li>Computational: Fork new parallel thread and accept if any thread
+leads to an accept state</li>
+<li>Mathematical: Tree with branches. Accept if any branch leads to an
+accept state</li>
+<li>Magical: Machine always makes the right guess that leads to
+accepting, if possible.</li>
+</ul></li>
+<li><strong>Theorem</strong>: If an NFA recognizes A, then A is regular
+<ul>
+<li><strong>Proof</strong>: Let NFA <span
+class="math inline">\(M=\left(Q,\mathrm{\Sigma},\delta,q_0,F\right)\)</span>
+recognize A, construct DFA <span
+class="math inline">\(M^\prime=\left(Q^\prime,\mathrm{\Sigma},\delta^\prime,q_0^\prime,F^\prime\right)\)</span>
+recognizing A</li>
+</ul></li>
+<li><strong>Theorem</strong>: If A is a regular language, so is <span
+class="math inline">\(A^\ast\)</span></li>
+<li><strong>Theorem</strong>: If R is a regular expo and A = L(R) then A
+is regular</li>
+</ul></li>
+</ul>
+<h3 id="lecture-3">Lecture 3</h3>
+<ol type="1">
+<li>Finite automata <span class="math inline">\(\rightarrow\)</span>
+regular expressions.</li>
+<li>Proving languages are't regular.</li>
+<li>Context free grammars</li>
+</ol>
+<ul>
+<li>DFAs <span class="math inline">\(\rightarrow\)</span> Regular
+Expressions
+<ul>
+<li>We have just explored conversion R <span
+class="math inline">\(\rightarrow\)</span> NFA M <span
+class="math inline">\(\rightarrow\)</span> DFA M’</li>
+<li><strong>Theorem</strong>: If A is regular, then A = L(R) for some
+regular expo R</li>
+<li><strong>Proof</strong>: Give conversion DFA M <span
+class="math inline">\(\rightarrow\)</span> R</li>
+</ul></li>
+<li>Generalized NFA
+<ul>
+<li><strong>Def</strong>: A Generalized Nondeterministic Finite
+Automaton (GNFA) is similar to an NFA, but allows regular expressions as
+transition labels
+<ul>
+<li>may read a whole string in one step</li>
+<li>Assume that:
+<ul>
+<li>Only have one accept state, which is separate from the start state
+(All previous accept state point to a new accept state)</li>
+<li>One arrow from each state to each other state, except that we can
+only exiting the start state and can only entering the accept state (use
+empty language regular expression)</li>
+</ul></li>
+<li><strong>Lemma</strong>: Every GNFA has an equivalent regular
+expression R</li>
+</ul></li>
+</ul></li>
+</ul>
+<!--  
+![](/img/sipser_lec3_pic1.png)
+-->
+<ul>
+<li><strong>Lemma</strong>: Every GNFA has an equivalent regular
+expression R
+<ul>
+<li><strong>Proof</strong>: By induction on the number of states k of
+G</li>
+<li>Basis: k=2, let R = r.</li>
+<li>Induction step (k&gt;2): Assume Lemma true for k-1 states and prove
+for k states, then convert k state GNFA to equivalent k-1 state
+GNFA.</li>
+<li>So we can convert GNFAs to regular expressions, and similarly we can
+also convert DFAs to regular expressions.</li>
+</ul></li>
+<li>How can we prove that a language is not regular?
+<ul>
+<li><strong>Pumping Lemma</strong>: For every regular language A, there
+is a p such that if <span class="math inline">\(s \in A\)</span> and
+<span class="math inline">\(\left| s \right| \geq p\)</span> then <span
+class="math inline">\(s=xyz\)</span> where
+<ul>
+<li><span class="math inline">\(xy^iz \in A\)</span> for all <span
+class="math inline">\(i \geq 0 y^i=yy...y\)</span></li>
+<li><span class="math inline">\(y \neq \epsilon\)</span></li>
+<li><span class="math inline">\(\left| xy \right| \leq p\)</span></li>
+</ul></li>
+<li>Variant: Combine closure properties with the pumping lemma.
+<ul>
+<li>Find a contradictory example (which might be denoted by intersection
+of several languages, this can prove that all the languages are not
+regular).</li>
+<li>Chomsky normal form:
+<ul>
+<li>A context-free grammar is in Chomsky normal form if every rule is of
+the form: <span class="math inline">\(A \rightarrow BC\)</span>, <span
+class="math inline">\(A \rightarrow a\)</span> where <span
+class="math inline">\(a\)</span> is any terminal and <span
+class="math inline">\(A\)</span>,<span class="math inline">\(B\)</span>
+and <span class="math inline">\(C\)</span> are any variables — except
+that <span class="math inline">\(B\)</span> and <span
+class="math inline">\(C\)</span> may not be the start variable. In
+addition, we permit the rule <span class="math inline">\(S \rightarrow
+\epsilon\)</span>, where <span class="math inline">\(S\)</span> is the
+start variable.</li>
+<li>Any context-free language is generated by a context-free grammar in
+Chomsky normal form.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="lecture-4-pushdown-automata-cfg---pda">Lecture 4: Pushdown
+Automata, CFG &lt;-&gt; PDA</h3>
+<ul>
+<li><strong>Context Free Grammars</strong>
+<ul>
+<li><strong>Rule</strong>: Variable -&gt; string of variables and
+terminals</li>
+<li><strong>Variables</strong>: Symbols appearing on left-hand side of
+rule</li>
+<li><strong>Terminals</strong>: Symbols appearing only on right-hand
+side</li>
+<li><strong>Start Variable</strong>: Top left symbol</li>
+<li><strong>Productions</strong>: A grammar consists of a collection of
+substitution rules</li>
+<li>e.g. G1: S -&gt; 0S1; S -&gt; R; R -&gt; <span
+class="math inline">\(\epsilon\)</span>;
+<ul>
+<li>in G1, there are 3 rules, 2 variables (R,S), 2 terminals (0,1), and
+1 start variable (S)</li>
+<li>Use or (|) symbol to write shorthand rules</li>
+</ul></li>
+<li><strong>Grammars generate strings</strong>:
+<ul>
+<li>Write down start variable.</li>
+<li>Replace any variable according to a rule. Repeat until only
+terminals remain.</li>
+<li>Result is the generated string.</li>
+<li>L(G) is the language of all generated strings.</li>
+<li>We call L(G) a Context Free Language.</li>
+</ul></li>
+<li><strong>Formal Definition</strong>:
+<ul>
+<li>A Context Free Grammar G is a 4-tuple <span
+class="math inline">\((V,\mathrm{\Sigma},R,S)\)</span></li>
+<li><span class="math inline">\(V\)</span>: finite set of variables</li>
+<li><span class="math inline">\(\Sigma\)</span>: finite set of terminal
+symbols</li>
+<li><span class="math inline">\(R\)</span>: finite set of rules</li>
+<li><span class="math inline">\(S\)</span>: start variable
+<ul>
+<li>for <span class="math inline">\(u,v \in (V \cup
+\mathrm{\Sigma})^\ast\)</span> write
+<ul>
+<li><span class="math inline">\(u \rightarrow v\)</span> if can go from
+u to v with one substitution step in G</li>
+<li><span class="math inline">\(u \overset{*}{\rightarrow} v\)</span> if
+can go from u to v with some number of substitution steps in G, and the
+whole sequence is called a derivation of v from u</li>
+</ul></li>
+</ul></li>
+<li>A is a Context Free Language if A=L(G) for some CFG G
+<ul>
+<li>If a string has two different parse trees then it is derived
+ambiguously and we say that the grammar is
+<strong>ambiguous</strong></li>
+</ul></li>
+</ul></li>
+<li>Schematic diagram: a higher level description for pushdown automata
+<ul>
+<li>Schematic diagram for DFA or NFA:
+<ul>
+<li>input appears on a “tape” (or we call it an “input tape”), the tape
+have a “head”</li>
+<li>and we have a finite control unit</li>
+</ul></li>
+<li>Schematic diagram for PDA
+<ul>
+<li>there is going to be a (pushdown) stack</li>
+<li>PDA might use its stack as a kind of unbounded memory, allow fir
+operations like write-add (push) or read-remove (pop) symbols from the
+top of the stack
+<ul>
+<li>e.g. the we can construct PDA for $D= { 0^k 1^k | k } $
+<ul>
+<li>Read 0s from input, push onto stack until read 1</li>
+<li>Read 1s from input, while popping 0s from stack</li>
+<li>Enter accept state of stack is empty. Note: acceptance only at end
+of input.</li>
+</ul></li>
+</ul></li>
+<li>Formal definition of pushdown automaton
+<ul>
+<li>A <strong>Pushdown Atomaton</strong> is a 6-tuple <span
+class="math inline">\((Q,\mathrm{\Sigma},\mathrm{\Gamma},\delta,q_0,F)\)</span></li>
+<li><span class="math inline">\(\Sigma\)</span>: input alphabet.</li>
+<li><span class="math inline">\(\Gamma\)</span>: stack alphabet.</li>
+<li>$:Q <em></em>P ( Q _) ( q,a,c ) = ( r_1, d ) , ( r_2, e ) $, use
+state and symbols to denote the transition movement.</li>
+</ul></li>
+<li>Converting CFGs to PDAs
+<ul>
+<li>Theorem: If A is a CFL iff some PDA recognize A</li>
+<li>"-&gt;" can be proved with relative ease.</li>
+<li>"&lt;-" would be harder</li>
+</ul></li>
+<li>Corollaries
+<ul>
+<li>Every regular language is a CFL</li>
+<li>If A is a CFL and B is regular, then A <span
+class="math inline">\(\cap\)</span> B is a CFL.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Recursive
+<ul>
+<li>We might divide the process: <span class="math inline">\(A_{pq}
+\rightarrow A_{pr} A_{rq}\)</span>, $ ( A_{pp} , A_{pq} a A_{rs} b )$
+(where a is the input read at the first move, b is the input read at the
+last move, r is the state following p, and s is the state preceding
+q).</li>
+</ul></li>
+</ul>
+<h3 id="lecture-5-cf-pumping-lemma-turing-machine">Lecture 5: CF Pumping
+Lemma, Turing Machine</h3>
+<ol type="1">
+<li>Proving languages not context free</li>
+<li>Turing Machines</li>
+<li>T-recognizable and T-decidable languages</li>
+</ol>
+<ul>
+<li>Pumping Lemma for CFLs
+<ul>
+<li>For every CFL A, there is a p such that if <span
+class="math inline">\(s\in A\)</span> and <span
+class="math inline">\(\left| s \right| \geq p\)</span> then <span
+class="math inline">\(s=uvxyz\)</span> where
+<ol type="1">
+<li><span class="math inline">\(u v^i x y^i z \in A\)</span> for all
+<span class="math inline">\(i \geq 0\)</span></li>
+<li><span class="math inline">\(vy \neq \epsilon\)</span></li>
+<li><span class="math inline">\(\left| vxy \right| \le p\)</span></li>
+</ol></li>
+<li>Informal definition: All long strings in A are pumpable and stay in
+A.</li>
+</ul></li>
+<li>The class of CFls is closed under intersection, concatenation and
+kleen star, but not closed under union.</li>
+<li>Deterministic Context-Free Languages (DCFLs): subset to
+non-deterministic context-free languages
+<ul>
+<li>DCFLs include <span class="math inline">\(0^n1^n\)</span> but do not
+include <span class="math inline">\(ww^R\)</span>.</li>
+<li><strong>Lemma</strong>: Every DPDA has an equivalent DPDA that
+always reads the entire input string.
+<ul>
+<li>To tackle with the problem of hanging and looping, use symbol $ as
+the bottom of the stack. If detected midway, reject; if not detected by
+the end of input, reject; if detected at previous accept state,
+accept.</li>
+</ul></li>
+<li><strong>Theorem</strong>: The class of DCFLs is closed under
+complementation.</li>
+<li>Reject
+<ul>
+<li>hanging: when the machine tries to pop an empty stack, initialize
+the stack with a special symbol to identify this reject situation.</li>
+<li>looping: when the machine makes an endless sequence of <span
+class="math inline">\(\epsilon\)</span>.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/wiki/Sipser-Part-One/" data-id="clgbzoyc60000lgmvfei144h3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/wiki/Induction/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/wiki/Sipser-Part-One/">Sipser Part One</a>
+          </li>
+        
+          <li>
+            <a href="/wiki/Induction/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/wiki/Basics/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/wiki/Introduction/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 肖扬<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

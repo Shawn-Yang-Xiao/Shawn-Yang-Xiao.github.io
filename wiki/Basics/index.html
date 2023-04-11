@@ -7,17 +7,23 @@
   
   <title>肖扬的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Software Foundations Basics Pattern-machine needs to be exhaustive, and cannot be redundant.">
+  <meta name="description" content="Software Foundations Online Textbook Michael Clarkson&#39;s Open Online Course (on Youtube) Michael Charkson&#39;s Course (on Bilibili) Xiong Yingfei&#39;s Course Webpage (2023 Spring) This note is used a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="肖扬的博客">
 <meta property="og:url" content="http://example.com/wiki/Basics/index.html">
 <meta property="og:site_name" content="肖扬的博客">
-<meta property="og:description" content="Software Foundations Basics Pattern-machine needs to be exhaustive, and cannot be redundant.">
+<meta property="og:description" content="Software Foundations Online Textbook Michael Clarkson&#39;s Open Online Course (on Youtube) Michael Charkson&#39;s Course (on Bilibili) Xiong Yingfei&#39;s Course Webpage (2023 Spring) This note is used a">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/wiki/Basics/img/02-step_by_step_1.png">
+<meta property="og:image" content="http://example.com/wiki/Basics/img/02-step_by_step_2.png">
+<meta property="og:image" content="http://example.com/wiki/Basics/img/02-step_by_step_3.png">
+<meta property="og:image" content="http://example.com/wiki/Basics/img/02-step_by_step_4.png">
+<meta property="og:image" content="http://example.com/wiki/Basics/img/02-notation.png">
 <meta property="article:published_time" content="2023-04-03T13:04:31.000Z">
-<meta property="article:modified_time" content="2023-04-03T13:04:50.171Z">
+<meta property="article:modified_time" content="2023-04-11T08:13:54.122Z">
 <meta property="article:author" content="肖扬">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/wiki/Basics/img/02-step_by_step_1.png">
   
     <link rel="alternate" href="/atom.xml" title="肖扬的博客" type="application/atom+xml">
   
@@ -79,14 +85,133 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="software-foundations">Software Foundations</h1>
+<p><a
+target="_blank" rel="noopener" href="https://softwarefoundations.cis.upenn.edu/lf-current/index.html">Online
+Textbook</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=BGg-gxhsV4E">Michael
+Clarkson's Open Online Course (on Youtube)</a> <a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kd4y1t7bw/">Michael Charkson's
+Course (on Bilibili)</a></p>
+<p><a target="_blank" rel="noopener" href="https://xiongyingfei.github.io/SF/2023/lectures.html">Xiong
+Yingfei's Course Webpage (2023 Spring)</a></p>
+<p>This note is used as a brief summary and supplementofr the textbook
+and courses.</p>
 <h2 id="basics">Basics</h2>
-<p>Pattern-machine needs to be exhaustive, and cannot be redundant.
-<!-- With examples --></p>
+<h3 id="enumerated-types">Enumerated Types</h3>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> day : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">monday</span></span><br><span class="line">  | <span class="type">tuesday</span></span><br><span class="line">  | <span class="type">wednesday</span></span><br><span class="line">  | <span class="type">thursday</span></span><br><span class="line">  | <span class="type">friday</span></span><br><span class="line">  | <span class="type">saturday</span></span><br><span class="line">  | <span class="type">sunday</span>.</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> next_weekday (d:day) : day :=</span><br><span class="line">  <span class="keyword">match</span> d <span class="built_in">with</span></span><br><span class="line">  | <span class="type">monday</span>    =&gt; tuesday</span><br><span class="line">  | <span class="type">tuesday</span>   =&gt; wednesday</span><br><span class="line">  | <span class="type">wednesday</span> =&gt; thursday</span><br><span class="line">  | <span class="type">thursday</span>  =&gt; friday</span><br><span class="line">  | <span class="type">friday</span>    =&gt; monday</span><br><span class="line">  | <span class="type">saturday</span>  =&gt; monday</span><br><span class="line">  | <span class="type">sunday</span>    =&gt; monday</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+<p>Then we can do the computation. <figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Compute</span> (next_weekday friday).</span><br><span class="line"><span class="comment">(* ==&gt; monday : day *)</span></span><br></pre></td></tr></table></figure></p>
+<p>Note that pattern-machine needs to be exhaustive, and cannot be
+redundant.</p>
+<p>For example:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> to_monday (d:day) : day := </span><br><span class="line">  <span class="keyword">match</span> d <span class="built_in">with</span></span><br><span class="line">  | <span class="type">monday</span> =&gt; monday</span><br><span class="line">  | <span class="type">tuesday</span> =&gt; monday</span><br><span class="line">  <span class="keyword">end</span>.</span><br><span class="line"><span class="comment">(** [messages window]</span></span><br><span class="line"><span class="comment">    Non exhaustive pattern-matching: no clause found for pattern</span></span><br><span class="line"><span class="comment">    wednesday *)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> to_monday (d:day) : day := </span><br><span class="line">  <span class="keyword">match</span> d <span class="built_in">with</span></span><br><span class="line">  | <span class="type">monday</span> =&gt; monday</span><br><span class="line">  | <span class="type">_</span> =&gt; monday</span><br><span class="line">  | <span class="type">sunday</span> =&gt; monday</span><br><span class="line">  <span class="keyword">end</span>.</span><br><span class="line"><span class="comment">(** [messages window]</span></span><br><span class="line"><span class="comment">    Pattern &quot;sunday&quot; is redundant in this clause. *)</span></span><br></pre></td></tr></table></figure>
+<h3 id="function-call">Function Call</h3>
+<p>Function call in Coq is by tapping the space bar, like
+<code>f a</code>, it is left associative (that is to say
+<code>f a b</code> is equal to <code>(f a) b</code>), and is with nearly
+the highest priority (i.e. <code>f a + b</code> is equal to
+<code>(f a) + b</code>).</p>
+<h3 id="equality">Equality</h3>
+<p>There are two notions of equality in Coq: the equals operator and the
+equals question mark operator. - The equals operator is a logical claim,
+means something we try to prove. Currently we only use this . - The
+equals question mark operator is an expression that Coq computes.
+Notation <code>x=?y</code>, <code>x&lt;=?y</code> use question to denote
+that this returns a boolean variable.</p>
+<h3 id="theory-proof">Theory Proof</h3>
+<p>Theory proof is the core of Coq, and it is with the form:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Example</span> test_next_weekday:</span><br><span class="line">  (next_weekday (next_weekday saturday)) = tuesday.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Proof</span>. <span class="built_in">simpl</span>. <span class="built_in">reflexivity</span>.  <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+<p>Or we may proof <code>Lemma</code>, <code>Theorem</code>, etc. other
+than <code>Example</code>.</p>
+<p>In the CoqIde, we can observe the proof process step by step with the
+help of 'Run to curser' icon.</p>
+<p>Take the above proof process as an example:</p>
+<p><img src="./img/02-step_by_step_1.png" /></p>
+<p><img src="./img/02-step_by_step_2.png" /></p>
+<p><img src="./img/02-step_by_step_3.png" /></p>
+<p><img src="./img/02-step_by_step_4.png" /></p>
+<h3 id="notation">Notation</h3>
+<p>Programmers can introduce new grammar rule.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x &amp;&amp; y&quot;</span> := (andb x y).</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x || y&quot;</span> := (orb x y).</span><br></pre></td></tr></table></figure>
+<p><img src="./img/02-notation.png" /></p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x =? y&quot;</span> := (eqb x y) (<span class="built_in">at</span> level <span class="number">70</span>) : nat_scope.</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x &lt;=? y&quot;</span> := (leb x y) (<span class="built_in">at</span> level <span class="number">70</span>) : nat_scope.</span><br></pre></td></tr></table></figure>
+<h3 id="if-then-else-in-coq"><code>if-then-else</code> in Coq</h3>
+<p><code>if-then-else</code> in Coq is quite different than in other
+languages, as type bool is not inherented in Coq.</p>
+<p>In Coq, <code>if</code> can be applied to any type with two
+constructors. If the condition variable is constrcted by the first, go
+to <code>then</code>, otherwise go to <code>else</code>.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> nbool : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">first</span></span><br><span class="line">  | <span class="type">second</span>.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Definition</span> trans (t : nbool) : nbool :=</span><br><span class="line">  <span class="keyword">if</span> t <span class="keyword">then</span> second</span><br><span class="line">  <span class="keyword">else</span> <span class="built_in">first</span>.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Example</span> exp1 : trans <span class="built_in">first</span> = second.</span><br><span class="line"><span class="keyword">Proof</span>. <span class="built_in">simpl</span>. <span class="built_in">reflexivity</span>. <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+<h3 id="check">Check</h3>
+<p>Used to inspect the type of expressions. (variables and functions),
+for example:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Check</span> true.</span><br><span class="line"><span class="keyword">Check</span> true : bool.</span><br><span class="line"><span class="keyword">Check</span> orb : bool -&gt; bool -&gt; bool.</span><br></pre></td></tr></table></figure>
+<p>bool <span class="math inline">\(\rightarrow\)</span> bool means a
+function with input of a bool variable and output of a bool variable.
+(just like Haskell). <span class="math inline">\(\rightarrow\)</span> is
+right associative.</p>
+<h3 id="details-of-symbl.-and-reflexivity.">Details of symbl. and
+reflexivity.</h3>
+<p>Coq syntax 1. Vernacular: Give commands to change what Coq is doing.
+Include <code>Check</code>, <code>Theorem</code>, <code>Proof</code>,
+<code>Qed</code> etc. 2. Gallina: Functional programming language, write
+code and state theorem with this. Include <code>match</code>,
+<code>if</code>, <code>forall</code>. 3. Ltac: Language for tactics,
+structure proofs into sections. Include <code>intros</code>,
+<code>simpl</code>, <code>reflexivity</code>, <code>destruct</code>.</p>
+<p>Lambda calculus (Theoretical underpinning of functional programming).
+<span class="math inline">\(e ::= x | \lambda x . e | e_1
+e_2\)</span></p>
+<p>Reduction tactics - <code>simpl.</code>: "human readable" -
+<code>cbn.</code>: call by name, try it if <code>simpl.</code> doesn't
+work. - <code>cbv.</code>: call by value, fully compute. Its result may
+be big and hard to read, unlike <code>simpl.</code>.</p>
+<p>Gallina (more than <span class="math inline">\(\lambda\)</span>)
+Definitions (delta reduction) Inductive types, patter matching;
+recursion (iota reduction); Let bindings (zeta reduction)</p>
+<!-- make this paragraph readable -->
+<h3 id="module-system">Module System</h3>
+<p><code>Module</code> in Coq is like <code>namespace</code> in C++ and
+<code>package</code> in Java.</p>
+<h3 id="natural-number">Natural Number</h3>
+<p>Definition of natural number</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> nat : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">O</span></span><br><span class="line">  | <span class="type">S</span> (n : nat).</span><br></pre></td></tr></table></figure>
+<p>Note that number 0 is denoted by captial letter O. <code>S</code>
+represents <code>succ</code> in some other languages.</p>
+<h3 id="recursive-function">Recursive Function</h3>
+<p>Recursive function is defined by keyword <code>Fixpoint</code>,
+i.e.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> even (n:nat) : bool :=</span><br><span class="line">  <span class="keyword">match</span> n <span class="built_in">with</span></span><br><span class="line">  | <span class="type">O</span>        =&gt; true</span><br><span class="line">  | <span class="type">S</span> O      =&gt; false</span><br><span class="line">  | <span class="type">S</span> (S n&#x27;) =&gt; even n&#x27;</span><br><span class="line">  <span class="keyword">end</span>.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">Fixpoint</span> eqb (n m : nat) : bool :=</span><br><span class="line">  <span class="keyword">match</span> n <span class="built_in">with</span></span><br><span class="line">  | <span class="type">O</span> =&gt; <span class="keyword">match</span> m <span class="built_in">with</span></span><br><span class="line">         | <span class="type">O</span> =&gt; true</span><br><span class="line">         | <span class="type">S</span> m&#x27; =&gt; false</span><br><span class="line">         <span class="keyword">end</span></span><br><span class="line">  | <span class="type">S</span> n&#x27; =&gt; <span class="keyword">match</span> m <span class="built_in">with</span></span><br><span class="line">            | <span class="type">O</span> =&gt; false</span><br><span class="line">            | <span class="type">S</span> m&#x27; =&gt; eqb n&#x27; m&#x27;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+<p>Coq only allows structural recursion.</p>
+<h3 id="intros"><code>intros</code></h3>
+<p>Introduce hypothesis including variable quantifiers and hypothesis
+(those before the right arrow).</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> plus_id_example : <span class="keyword">forall</span> n m:nat,</span><br><span class="line">  n = m -&gt;</span><br><span class="line">  n + n = m + m.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="comment">(* move both quantifiers into the context: *)</span></span><br><span class="line">  <span class="built_in">intros</span> n m.</span><br><span class="line">  <span class="comment">(* move the hypothesis into the context: *)</span></span><br><span class="line">  <span class="built_in">intros</span> H.</span><br><span class="line">  <span class="comment">(* rewrite the goal using the hypothesis: *)</span></span><br><span class="line">  <span class="built_in">rewrite</span> -&gt; H.</span><br><span class="line">  <span class="built_in">reflexivity</span>.  <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+<p>Right arrow and left arrow are different in <code>rewrite</code>
+expression. In the above example, <code>n</code> is replaced by
+<code>m</code>, and in the following one, <code>(p * 0)</code> is
+replaced by <code>0</code>.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(* mult_n_O ===&gt; forall n : nat, 0 = n * 0 *)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Theorem</span> mult_n_0_m_0 : <span class="keyword">forall</span> p q : nat,</span><br><span class="line">  (p * <span class="number">0</span>) + (q * <span class="number">0</span>) = <span class="number">0.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> p q.</span><br><span class="line">  <span class="built_in">rewrite</span> &lt;- mult_n_O.</span><br><span class="line">  <span class="built_in">rewrite</span> &lt;- mult_n_O.</span><br><span class="line">  <span class="built_in">reflexivity</span>. <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+<h3 id="destruct"><code>destruct</code></h3>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> plus_1_neq_0 : <span class="keyword">forall</span> n : nat,</span><br><span class="line">  (n + <span class="number">1</span>) =? <span class="number">0</span> = false.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n. <span class="built_in">destruct</span> n <span class="built_in">as</span> [| <span class="type">n</span>&#x27;] eqn:E.</span><br><span class="line">  - <span class="built_in">reflexivity</span>.</span><br><span class="line">  - <span class="built_in">reflexivity</span>.   <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+<p>(<code>[| n']</code> is equal to <code>[O | S n']</code>)</p>
+<p>In the proof process above, <code>destruct</code> divide it into two
+subgoals. The first is to prove that <code>(0 + 1 =? 0) = false</code>,
+the second is to prove that <code>(S n' + 1 =? 0) = false</code>. In the
+first subgoal, <code>eqn:E</code> name the hypothesis n=0 as E.</p>
+<p>Two <code>reflexivity.</code> with a dash in front solves one
+subgoal, respectively.</p>
+<p>Here is another example of two variables need subgoal division.
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> andb_commutative : <span class="keyword">forall</span> b c, andb b c = andb c b.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> b c. <span class="built_in">destruct</span> b eqn:Eb.</span><br><span class="line">  <span class="comment">(* b = true *)</span></span><br><span class="line">  - <span class="built_in">destruct</span> c eqn:Ec.</span><br><span class="line">    + <span class="built_in">reflexivity</span>.  <span class="comment">(* c = true *)</span></span><br><span class="line">    + <span class="built_in">reflexivity</span>.  <span class="comment">(* c = false *)</span></span><br><span class="line">  <span class="comment">(* b = false *)</span></span><br><span class="line">  - <span class="built_in">destruct</span> c eqn:Ec.</span><br><span class="line">    + <span class="built_in">reflexivity</span>.  <span class="comment">(* c = true *)</span></span><br><span class="line">    + <span class="built_in">reflexivity</span>.  <span class="comment">(* c = false *)</span></span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure></p>
+<p>Besides <code>+</code> and <code>-</code>, Coq also permits other
+notations, like braces.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/wiki/Basics/" data-id="clg11tn7n0001vkmv6npbg95g" class="article-share-link">Share</a>
+      <a data-url="http://example.com/wiki/Basics/" data-id="clg1287ju0003x8mv1apa5wk9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -142,6 +267,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/wiki/Sipser-Part-One/">Sipser Part One</a>
+          </li>
         
           <li>
             <a href="/wiki/Induction/">(no title)</a>
