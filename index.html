@@ -66,6 +66,182 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Software-Foundations-06-Tactics" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/wiki/Software-Foundations-06-Tactics/" class="article-date">
+  <time datetime="2023-04-11T08:24:12.000Z" itemprop="datePublished">2023-04-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/wiki/Software-Foundations-06-Tactics/">Software Foundations 06 Tactics</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="software-foundations">Software Foundations</h1>
+<p><a
+target="_blank" rel="noopener" href="https://softwarefoundations.cis.upenn.edu/lf-current/index.html">Online
+Textbook</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=BGg-gxhsV4E">Michael
+Clarkson's Open Online Course (on Youtube)</a> <a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kd4y1t7bw/">Michael Charkson's
+Course (on Bilibili)</a></p>
+<p><a target="_blank" rel="noopener" href="https://xiongyingfei.github.io/SF/2023/lectures.html">Xiong
+Yingfei's Course Webpage (2023 Spring)</a></p>
+<p>This note is used as a brief summary and supplementofr the textbook
+and courses.</p>
+<h2 id="tactics">Tactics</h2>
+<h3 id="the-apply-tactic-with-symmetry-and-transitivity">The
+<code>apply</code> tactic with <code>symmetry</code> and
+<code>transitivity</code></h3>
+<h4 id="apply"><code>apply</code></h4>
+<p>When encountering situations where the goal to be proved is exactly
+the same as some hypothesis in the context or some previously proved
+lemma, we can use <code>apply</code> tactic instead of the
+<code>rewrite</code> &amp; <code>reflexivity</code> we previously
+used.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> silly1 : <span class="keyword">forall</span> (n m : nat),</span><br><span class="line">  n = m -&gt;</span><br><span class="line">  n = m.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n m eq.</span><br><span class="line"><span class="comment">(** n, m : nat</span></span><br><span class="line"><span class="comment">    eq : n = m</span></span><br><span class="line"><span class="comment">    ______________________________________(1/1)</span></span><br><span class="line"><span class="comment">    n = m</span></span><br><span class="line"><span class="comment">*)</span></span><br><span class="line">  <span class="built_in">apply</span> eq.  <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/wiki/Software-Foundations-06-Tactics/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/wiki/Software-Foundations-06-Tactics/" data-id="clgbzyn7u0002m8mvcv4y1q28" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Software-Foundations-05-Poly" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/wiki/Software-Foundations-05-Poly/" class="article-date">
+  <time datetime="2023-04-11T08:22:56.000Z" itemprop="datePublished">2023-04-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/wiki/Software-Foundations-05-Poly/">Software Foundations 05 Poly</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="software-foundations">Software Foundations</h1>
+<p><a
+target="_blank" rel="noopener" href="https://softwarefoundations.cis.upenn.edu/lf-current/index.html">Online
+Textbook</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=BGg-gxhsV4E">Michael
+Clarkson's Open Online Course (on Youtube)</a> <a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kd4y1t7bw/">Michael Charkson's
+Course (on Bilibili)</a></p>
+<p><a target="_blank" rel="noopener" href="https://xiongyingfei.github.io/SF/2023/lectures.html">Xiong
+Yingfei's Course Webpage (2023 Spring)</a></p>
+<p>This note is used as a brief summary and supplementofr the textbook
+and courses.</p>
+<h2 id="poly">Poly</h2>
+<h3 id="polymorphism">Polymorphism</h3>
+<h4 id="omit-type-argument">Omit Type Argument</h4>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> list (X:<span class="keyword">Type</span>) : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">nil</span></span><br><span class="line">  | <span class="type">cons</span> (x : X) (l : list X).</span><br></pre></td></tr></table></figure>
+<p>The type list is thus parameterized on another type X.</p>
+        
+          <p class="article-more-link">
+            <a href="/wiki/Software-Foundations-05-Poly/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/wiki/Software-Foundations-05-Poly/" data-id="clgbzyn7t0001m8mv10q87zoj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Software-Foundations-04-Lists" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/wiki/Software-Foundations-04-Lists/" class="article-date">
+  <time datetime="2023-04-11T08:21:47.000Z" itemprop="datePublished">2023-04-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/wiki/Software-Foundations-04-Lists/">Software Foundations 04 Lists</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="software-foundations">Software Foundations</h1>
+<p><a
+target="_blank" rel="noopener" href="https://softwarefoundations.cis.upenn.edu/lf-current/index.html">Online
+Textbook</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=BGg-gxhsV4E">Michael
+Clarkson's Open Online Course (on Youtube)</a> <a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kd4y1t7bw/">Michael Charkson's
+Course (on Bilibili)</a></p>
+<p><a target="_blank" rel="noopener" href="https://xiongyingfei.github.io/SF/2023/lectures.html">Xiong
+Yingfei's Course Webpage (2023 Spring)</a></p>
+<p>This note is used as a brief summary and supplementofr the textbook
+and courses.</p>
+<h2 id="lists">Lists</h2>
+<h3 id="pairs">Pairs</h3>
+<p>We define the pair of natural numbers. (Cartesian product)
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> natprod : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">pair</span> (n1 n2 : nat).</span><br><span class="line"></span><br><span class="line"><span class="keyword">Definition</span> fst (p : natprod) : nat :=</span><br><span class="line">  <span class="keyword">match</span> p <span class="built_in">with</span></span><br><span class="line">  | <span class="type">pair</span> x y =&gt; x</span><br><span class="line">  <span class="keyword">end</span>.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Definition</span> snd (p : natprod) : nat :=</span><br><span class="line">  <span class="keyword">match</span> p <span class="built_in">with</span></span><br><span class="line">  | <span class="type">pair</span> x y =&gt; y</span><br><span class="line">  <span class="keyword">end</span>.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;( x , y )&quot;</span> := (pair x y).</span><br></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/wiki/Software-Foundations-04-Lists/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/wiki/Software-Foundations-04-Lists/" data-id="clgbzyn7p0000m8mv832tggr6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Sipser-Part-One" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/wiki/Sipser-Part-One/" class="article-date">
@@ -278,19 +454,23 @@ type system is sound. (Well-typed programs don't go wrong.)</p>
       <ul>
         
           <li>
+            <a href="/wiki/Software-Foundations-06-Tactics/">Software Foundations 06 Tactics</a>
+          </li>
+        
+          <li>
+            <a href="/wiki/Software-Foundations-05-Poly/">Software Foundations 05 Poly</a>
+          </li>
+        
+          <li>
+            <a href="/wiki/Software-Foundations-04-Lists/">Software Foundations 04 Lists</a>
+          </li>
+        
+          <li>
             <a href="/wiki/Sipser-Part-One/">Sipser Part One</a>
           </li>
         
           <li>
             <a href="/wiki/Induction/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/wiki/Basics/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/wiki/Introduction/">(no title)</a>
           </li>
         
       </ul>
