@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Software Foundations 06 Tactics | 肖扬的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Software Foundations Online Textbook Michael Clarkson&#39;s Open Online Course (on Youtube) Michael Charkson&#39;s Course (on Bilibili) Xiong Yingfei&#39;s Course Webpage (2023 Spring) This note is used a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Software Foundations 06 Tactics">
+<meta property="og:url" content="http://example.com/wiki/Software-Foundations-06-Tactics/index.html">
+<meta property="og:site_name" content="肖扬的博客">
+<meta property="og:description" content="Software Foundations Online Textbook Michael Clarkson&#39;s Open Online Course (on Youtube) Michael Charkson&#39;s Course (on Bilibili) Xiong Yingfei&#39;s Course Webpage (2023 Spring) This note is used a">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-11T08:24:12.000Z">
+<meta property="article:modified_time" content="2025-02-19T09:27:38.382Z">
+<meta property="article:author" content="肖扬">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="肖扬的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">肖扬的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Software-Foundations-06-Tactics" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/wiki/Software-Foundations-06-Tactics/" class="article-date">
+  <time datetime="2023-04-11T08:24:12.000Z" itemprop="datePublished">2023-04-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Software Foundations 06 Tactics
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="software-foundations">Software Foundations</h1>
+<p><a
+target="_blank" rel="noopener" href="https://softwarefoundations.cis.upenn.edu/lf-current/index.html">Online
+Textbook</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=BGg-gxhsV4E">Michael
+Clarkson's Open Online Course (on Youtube)</a> <a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kd4y1t7bw/">Michael Charkson's
+Course (on Bilibili)</a></p>
+<p><a target="_blank" rel="noopener" href="https://xiongyingfei.github.io/SF/2023/lectures.html">Xiong
+Yingfei's Course Webpage (2023 Spring)</a></p>
+<p>This note is used as a brief summary and supplementofr the textbook
+and courses.</p>
+<h2 id="tactics">Tactics</h2>
+<h3 id="the-apply-tactic-with-symmetry-and-transitivity">The
+<code>apply</code> tactic with <code>symmetry</code> and
+<code>transitivity</code></h3>
+<h4 id="apply"><code>apply</code></h4>
+<p>When encountering situations where the goal to be proved is exactly
+the same as some hypothesis in the context or some previously proved
+lemma, we can use <code>apply</code> tactic instead of the
+<code>rewrite</code> &amp; <code>reflexivity</code> we previously
+used.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> silly1 : <span class="keyword">forall</span> (n m : nat),</span><br><span class="line">  n = m -&gt;</span><br><span class="line">  n = m.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n m eq.</span><br><span class="line"><span class="comment">(** n, m : nat</span></span><br><span class="line"><span class="comment">    eq : n = m</span></span><br><span class="line"><span class="comment">    ______________________________________(1/1)</span></span><br><span class="line"><span class="comment">    n = m</span></span><br><span class="line"><span class="comment">*)</span></span><br><span class="line">  <span class="built_in">apply</span> eq.  <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>The <code>apply</code> tactic also works with conditional hypothesis.
+Like <code>eq2: n = m -&gt; [n;o] = [m;p]</code> in the following
+theorem. <figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> silly2 : <span class="keyword">forall</span> (n m o p : nat),</span><br><span class="line">  n = m -&gt;</span><br><span class="line">  (n = m -&gt; [n;o] = [m;p]) -&gt;</span><br><span class="line">  [n;o] = [m;p].</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n m o p eq1 eq2.</span><br><span class="line">  <span class="built_in">apply</span> eq2. <span class="built_in">apply</span> eq1.  <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure></p>
+<h4 id="symmetry"><code>symmetry</code></h4>
+<p>The <code>symmetry</code> tactic exchange left hand side with right
+hand side. It is useful in the following example. <figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> silly3 : <span class="keyword">forall</span> (n m : nat),</span><br><span class="line">  n = m -&gt;</span><br><span class="line">  m = n.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n m H.</span><br><span class="line">  <span class="built_in">symmetry</span>. <span class="built_in">apply</span> H.  <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure></p>
+<h4 id="transitivity"><code>transitivity</code></h4>
+<p>Sometimes we need the help of <code>transitivity</code> tactic to
+utilize <code>apply</code>: <figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Example</span> trans_eq_example&#x27; : <span class="keyword">forall</span> (a b c d e f : nat),</span><br><span class="line">     [a;b] = [c;d] -&gt;</span><br><span class="line">     [c;d] = [e;f] -&gt;</span><br><span class="line">     [a;b] = [e;f].</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> a b c d e f eq1 eq2.</span><br><span class="line">  <span class="built_in">apply</span> trans_eq <span class="built_in">with</span> (m:=[c;d]). <span class="comment">(* or try transitivity [c;d]. *)</span></span><br><span class="line">  <span class="built_in">apply</span> eq1. <span class="built_in">apply</span> eq2.   <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure></p>
+<h3 id="the-injection-and-discriminate-tactics">The
+<code>injection</code> and <code>discriminate</code> Tactics</h3>
+<h4 id="injective-property-and-tactic">Injective property and
+tactic</h4>
+<p>Take the example of type <code>nat</code>: <figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> nat : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">O</span></span><br><span class="line">  | <span class="type">S</span> (n : nat).</span><br></pre></td></tr></table></figure></p>
+<p>Injective means that <span class="math inline">\(S n = S m =&gt; n =
+m\)</span>.</p>
+<p>Here is an example of the <code>injective</code> tactic.
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> injection_ex1 : <span class="keyword">forall</span> (n m o : nat),</span><br><span class="line">  [n;m] = [o;o] -&gt;</span><br><span class="line">  n = m.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n m o H.</span><br><span class="line">  <span class="comment">(* WORKED IN CLASS *)</span></span><br><span class="line">  <span class="built_in">injection</span> H <span class="built_in">as</span> H1 H2.</span><br><span class="line">  <span class="built_in">rewrite</span> H1. <span class="built_in">rewrite</span> H2. <span class="built_in">reflexivity</span>.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure></p>
+<h4 id="disjoint-property-and-the-discriminate-tactic">Disjoint Property
+and The <code>discriminate</code> Tactic</h4>
+<p>Disjoint means that, two terms beginning with different constructors
+can never be equal. For example, <span class="math inline">\(S n \neq
+0\)</span> for all <span class="math inline">\(n \in nat\)</span>.</p>
+<p>So any time we are given such contradictary assumptions, any
+conclusion are thus satisfied, like the following example:
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> discriminate_ex1 : <span class="keyword">forall</span> (n m : nat),</span><br><span class="line">  false = true -&gt;</span><br><span class="line">  n = m.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n m contra. <span class="built_in">discriminate</span> contra. <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure></p>
+<h3 id="using-tactics-on-hypotheses">Using Tactics on Hypotheses</h3>
+<p>The tactic <code>simpl in H</code> performs simplification on the
+hypothesis <code>H</code> in the context.</p>
+<p>Similarly we have <code>apply H1 in H2</code> and
+<code>symmetry in H</code>.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> silly4 : <span class="keyword">forall</span> (n m p q : nat),</span><br><span class="line">  (n = m -&gt; p = q) -&gt;</span><br><span class="line">  m = n -&gt;</span><br><span class="line">  q = p.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n m p q EQ H.</span><br><span class="line">  <span class="built_in">symmetry</span> <span class="built_in">in</span> H. <span class="built_in">apply</span> EQ <span class="built_in">in</span> H. <span class="built_in">symmetry</span> <span class="built_in">in</span> H.</span><br><span class="line">  <span class="built_in">apply</span> H.  <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+<h3 id="the-generalize-dependent-tactic">The
+<code>generalize dependent</code> Tactic</h3>
+<p>To illustrate the need of the tactic, I first show the rule of
+<code>intros</code>, that all variables and hypotheses will be
+introduced according to its sequance of appearance.</p>
+<p>Here is an example of a failed proof:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Example</span> discriminate_ex3 :</span><br><span class="line">  <span class="keyword">forall</span> (X : <span class="keyword">Type</span>) (x y z : X) (l j : list X),</span><br><span class="line">    x :: y :: l = [] -&gt;</span><br><span class="line">    x = z.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> x y z l j contra.</span><br><span class="line">  Fail <span class="built_in">discriminate</span> contra.</span><br></pre></td></tr></table></figure>
+<p>That is because <code>x</code> corresponds to <code>X</code> which is
+a type, <code>y</code> <code>z</code> and <code>l</code> corresponts the
+three <code>X</code> type variable, and that <code>j</code> and
+<code>contra</code> corresponds to the two lists. So we cannot just skip
+some variable unintroduced.</p>
+<p>But sometimes we do need free variables that haven't been introduced.
+Like in the following theorem: <figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> double_injective_take2 : <span class="keyword">forall</span> n m,</span><br><span class="line">  <span class="built_in">double</span> n = <span class="built_in">double</span> m -&gt;</span><br><span class="line">  n = m.</span><br></pre></td></tr></table></figure></p>
+<p>Then we can use <code>generalize dependent</code> tactic to
+temporarily free variable n.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n m.</span><br><span class="line">  <span class="comment">(* [n] and [m] are both in the context *)</span></span><br><span class="line">  <span class="built_in">generalize</span> <span class="built_in">dependent</span> n.</span><br><span class="line">  <span class="comment">(* Now [n] is back in the goal and we can do induction on</span></span><br><span class="line"><span class="comment">     [m] and get a sufficiently general IH. *)</span></span><br><span class="line">  <span class="built_in">induction</span> m <span class="built_in">as</span> [| <span class="type">m</span>&#x27; IHm&#x27;].</span><br><span class="line">  - <span class="comment">(* m = O *)</span> <span class="built_in">simpl</span>. <span class="built_in">intros</span> n eq. <span class="built_in">destruct</span> n <span class="built_in">as</span> [| <span class="type">n</span>&#x27;] eqn:E.</span><br><span class="line">    + <span class="comment">(* n = O *)</span> <span class="built_in">reflexivity</span>.</span><br><span class="line">    + <span class="comment">(* n = S n&#x27; *)</span> <span class="built_in">discriminate</span> eq.</span><br><span class="line">  - <span class="comment">(* m = S m&#x27; *)</span> <span class="built_in">intros</span> n eq. <span class="built_in">destruct</span> n <span class="built_in">as</span> [| <span class="type">n</span>&#x27;] eqn:E.</span><br><span class="line">    + <span class="comment">(* n = O *)</span> <span class="built_in">discriminate</span> eq.</span><br><span class="line">    + <span class="comment">(* n = S n&#x27; *)</span> <span class="built_in">apply</span> <span class="built_in">f_equal</span>.</span><br><span class="line">      <span class="built_in">apply</span> IHm&#x27;. <span class="built_in">injection</span> eq <span class="built_in">as</span> goal. <span class="built_in">apply</span> goal.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+<h3 id="unfolding-definitions">Unfolding Definitions</h3>
+<p>The <code>simpl</code> tactic will only unfold <code>match</code> or
+<code>fixpoint</code> definition, not <code>Definition</code> clause. so
+we need <code>unfold</code> tactic to do this job.</p>
+<p>And it comes along with some new example of <code>destruct</code>
+tactic. <figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> sillyfun (n : nat) : bool :=</span><br><span class="line">  <span class="keyword">if</span> n =? <span class="number">3</span> <span class="keyword">then</span> false</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> n =? <span class="number">5</span> <span class="keyword">then</span> false</span><br><span class="line">  <span class="keyword">else</span> false.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Theorem</span> sillyfun_false : <span class="keyword">forall</span> (n : nat),</span><br><span class="line">  sillyfun n = false.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n. <span class="built_in">unfold</span> sillyfun.</span><br><span class="line">  <span class="built_in">destruct</span> (n =? <span class="number">3</span>) eqn:E1.</span><br><span class="line">    - <span class="comment">(* n =? 3 = true *)</span> <span class="built_in">reflexivity</span>.</span><br><span class="line">    - <span class="comment">(* n =? 3 = false *)</span> <span class="built_in">destruct</span> (n =? <span class="number">5</span>) eqn:E2.</span><br><span class="line">      + <span class="comment">(* n =? 5 = true *)</span> <span class="built_in">reflexivity</span>.</span><br><span class="line">      + <span class="comment">(* n =? 5 = false *)</span> <span class="built_in">reflexivity</span>.  <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure></p>
+<p>Here is another example of the <code>destrct</code> tactic being
+applied to compound expressions: <figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> bool_fn_applied_thrice :</span><br><span class="line">  <span class="keyword">forall</span> (f : bool -&gt; bool) (b : bool),</span><br><span class="line">  f (f (f b)) = f b.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> f b. </span><br><span class="line">  <span class="built_in">destruct</span> b eqn:H1.</span><br><span class="line">  - <span class="built_in">destruct</span> (f b) eqn:H2.</span><br><span class="line">    + <span class="built_in">rewrite</span> H1 <span class="built_in">in</span> H2. <span class="built_in">rewrite</span> H2. <span class="built_in">rewrite</span> H2. <span class="built_in">rewrite</span> H2. <span class="built_in">reflexivity</span>.</span><br><span class="line">    + <span class="built_in">rewrite</span> H1 <span class="built_in">in</span> H2. <span class="built_in">rewrite</span> H2. <span class="built_in">destruct</span> (f false) eqn:E3.</span><br><span class="line">        <span class="built_in">rewrite</span> H2. <span class="built_in">reflexivity</span>. </span><br><span class="line">        <span class="built_in">rewrite</span> E3. <span class="built_in">reflexivity</span>.</span><br><span class="line">  - <span class="built_in">destruct</span> (f b) eqn:H2.</span><br><span class="line">    + <span class="built_in">rewrite</span> H1 <span class="built_in">in</span> H2. <span class="built_in">rewrite</span> H2. <span class="built_in">destruct</span> (f true) eqn:E3.</span><br><span class="line">        <span class="built_in">rewrite</span> E3. <span class="built_in">reflexivity</span>. </span><br><span class="line">        <span class="built_in">rewrite</span> H2. <span class="built_in">reflexivity</span>.</span><br><span class="line">    + <span class="built_in">rewrite</span> H1 <span class="built_in">in</span> H2. <span class="built_in">rewrite</span> H2. <span class="built_in">rewrite</span> H2. <span class="built_in">rewrite</span> H2. <span class="built_in">reflexivity</span>.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/wiki/Software-Foundations-06-Tactics/" data-id="cm7bqkvmj000788ujdq4c7r08" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/wiki/UPenn-CIS-194-Haskell/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          UPenn CIS 194 Haskell
+        
+      </div>
+    </a>
+  
+  
+    <a href="/wiki/Software-Foundations-05-Poly/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Software Foundations 05 Poly</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/wiki/UPenn-CIS-194-Haskell/">UPenn CIS 194 Haskell</a>
+          </li>
+        
+          <li>
+            <a href="/wiki/Software-Foundations-06-Tactics/">Software Foundations 06 Tactics</a>
+          </li>
+        
+          <li>
+            <a href="/wiki/Software-Foundations-05-Poly/">Software Foundations 05 Poly</a>
+          </li>
+        
+          <li>
+            <a href="/wiki/Software-Foundations-04-Lists/">Software Foundations 04 Lists</a>
+          </li>
+        
+          <li>
+            <a href="/wiki/Sipser-Part-One/">Sipser Part One</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2025 肖扬<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
